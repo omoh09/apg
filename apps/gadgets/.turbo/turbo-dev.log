@@ -2,119 +2,202 @@
 > gadgets@0.1.0 dev C:\Users\USER\Desktop\Workspace\apg\apg\apps\gadgets
 > next dev
 
+ ⚠ Port 3000 is in use by process 22552, using available port 3002 instead.
    ▲ Next.js 15.4.10
-   - Local:        http://localhost:3000
-   - Network:      http://192.168.56.1:3000
+   - Local:        http://localhost:3002
+   - Network:      http://192.168.56.1:3002
 
  ✓ Starting...
- ✓ Ready in 11.3s
+ ✓ Ready in 20.9s
+ ○ Compiling / ...
+ ✓ Compiled / in 32.9s (1802 modules)
+ GET / 200 in 37369ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 4.7s (1045 modules)
+ GET /favicon.ico 200 in 5500ms
+ ○ Compiling /smartphones ...
+ ✓ Compiled /smartphones in 3.5s (1833 modules)
+ GET /smartphones 200 in 4416ms
+ GET /smartphones 200 in 231ms
+ GET /favicon.ico 200 in 54ms
+ ○ Compiling /products ...
+ ✓ Compiled /products in 989ms (1827 modules)
+ GET /products 200 in 1231ms
+ GET /favicon.ico 200 in 49ms
+ ○ Compiling /accessories ...
+ ✓ Compiled /accessories in 2.7s (1818 modules)
+ GET /accessories 200 in 3427ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 688ms (1066 modules)
+ GET /favicon.ico 200 in 972ms
+   Reload env: .env
+ ✓ Compiled in 2.7s (1818 modules)
+ GET /accessories 200 in 653ms
+   Reload env: .env
+   Reload env: .env
+Request timed out after 3000ms
+
+Retrying 1/3...
+Request timed out after 3000ms
+
+Retrying 1/3...
+Request timed out after 3000ms
+
+Retrying 1/3...
+Request timed out after 3000ms
+
+Retrying 1/3...
+Request timed out after 3000ms
+
+Retrying 1/3...
+ GET /accessories 200 in 8397ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 52.5s (1835 modules)
+ GET /favicon.ico 200 in 5413ms
+ GET /accessories 200 in 645ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /accessories 200 in 1521ms
+ GET /favicon.ico 200 in 43ms
+ GET /accessories 200 in 236ms
+ GET /favicon.ico 200 in 33ms
+ ○ Compiling /cart ...
+ ✓ Compiled /cart in 3.8s (1846 modules)
+ GET /cart 200 in 4672ms
+ GET /cart 200 in 135ms
+ GET /cart 200 in 121ms
+ GET /favicon.ico 200 in 134ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 2.1s (1882 modules)
+ GET /login?redirect=%2Fcheckout 200 in 2921ms
+ GET /favicon.ico 200 in 167ms
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 2.9s (108 modules)
+ ○ Compiling /checkout ...
+ ✓ Compiled /checkout in 5s (1863 modules)
+ GET /checkout 200 in 5908ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1859ms (1085 modules)
+ GET /favicon.ico 200 in 2563ms
+ ✓ Compiled in 11.7s (1871 modules)
+ GET /checkout 200 in 712ms
+ ✓ Compiled in 2.7s (1871 modules)
+ GET /checkout 200 in 291ms
+ ✓ Compiled in 11s (1871 modules)
+ ✓ Compiled in 1353ms (1871 modules)
+ ✓ Compiled in 2.9s (1871 modules)
+ ✓ Compiled in 2.4s (1871 modules)
+ GET /checkout 200 in 2322ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 8.7s (1079 modules)
+ GET /favicon.ico 200 in 10121ms
+ GET /cart 200 in 4099ms
+ GET /favicon.ico 200 in 103ms
+ GET /checkout 200 in 45ms
+ GET /favicon.ico 200 in 31ms
+ ○ Compiling /checkout/success ...
+ ✓ Compiled /checkout/success in 5.4s (1863 modules)
+ GET /checkout/success 200 in 6352ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1129ms (1084 modules)
+ GET /favicon.ico 200 in 1419ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1419ms (1100 modules)
+ GET / 200 in 1764ms
+ GET /favicon.ico 200 in 231ms
+ GET /cart 200 in 67ms
+ GET /favicon.ico 200 in 19ms
+ GET / 200 in 39ms
+ GET /favicon.ico 200 in 28ms
+ ○ Compiling /products ...
+ ✓ Compiled /products in 632ms (1100 modules)
+ GET /products 200 in 851ms
+ GET /favicon.ico 200 in 77ms
+ GET /cart 200 in 53ms
+ GET /favicon.ico 200 in 17ms
+ GET /checkout 200 in 63ms
+ GET /favicon.ico 200 in 21ms
+ GET /checkout/success 200 in 93ms
+ GET /favicon.ico 200 in 29ms
+ GET /checkout/success 200 in 32ms
+ GET / 200 in 67ms
+ GET /favicon.ico 200 in 33ms
+ GET /products 200 in 61ms
+ GET /favicon.ico 200 in 29ms
+ GET /cart 200 in 79ms
+ GET /favicon.ico 200 in 25ms
+ GET /checkout 200 in 44ms
+ GET /favicon.ico 200 in 31ms
+ ✓ Compiled in 20.5s (1870 modules)
+ GET /checkout 200 in 2240ms
+ ✓ Compiled in 7.2s (1870 modules)
+ GET /checkout 200 in 275ms
+ ✓ Compiled in 8.8s (1870 modules)
+ GET /checkout 200 in 198ms
+ ✓ Compiled in 2.9s (1870 modules)
+ GET /checkout 200 in 159ms
+ ✓ Compiled in 2.8s (1870 modules)
+ GET /checkout 200 in 187ms
+ ✓ Compiled in 2.4s (1870 modules)
+ GET /checkout 200 in 147ms
+ GET /checkout 200 in 1726ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 3.4s (1077 modules)
+ GET /favicon.ico 200 in 3860ms
+ GET /checkout/success 200 in 251ms
+ GET /favicon.ico 200 in 36ms
+ GET /cart 200 in 55ms
+ GET /favicon.ico 200 in 44ms
+ GET / 200 in 68ms
+ GET /favicon.ico 200 in 41ms
+ GET /products 200 in 77ms
+ GET /favicon.ico 200 in 30ms
  ○ Compiling /[slug] ...
- ⨯ ./app/(main)/[slug]/page.tsx
-Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-  [31m|[0m
-  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-  [31m|[0m
-
-   ,-[[36;1;4mC:\Users\USER\Desktop\Workspace\apg\apg\apps\gadgets\app\(main)\[slug]\page.tsx[0m:4:1]
- [2m1[0m | import { getProductBySlug } from "@calls/productCalls";
- [2m2[0m | import Image from "next/image";
- [2m3[0m | import { Metadata } from "next";
- [2m4[0m | import { useState } from "react";
-   : [35;1m         ^^^^^^^^[0m
- [2m5[0m | import { notFound } from "next/navigation";
- [2m6[0m | import StarRating from "@/components/ui/starRating";
- [2m6[0m | import bg from "@/public/icons/contourBg.png";
-   `----
-
-Import trace for requested module:
-./app/(main)/[slug]/page.tsx
- ⨯ ./app/(main)/[slug]/page.tsx
-Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-  [31m|[0m
-  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-  [31m|[0m
-
-   ,-[[36;1;4mC:\Users\USER\Desktop\Workspace\apg\apg\apps\gadgets\app\(main)\[slug]\page.tsx[0m:4:1]
- [2m1[0m | import { getProductBySlug } from "@calls/productCalls";
- [2m2[0m | import Image from "next/image";
- [2m3[0m | import { Metadata } from "next";
- [2m4[0m | import { useState } from "react";
-   : [35;1m         ^^^^^^^^[0m
- [2m5[0m | import { notFound } from "next/navigation";
- [2m6[0m | import StarRating from "@/components/ui/starRating";
- [2m6[0m | import bg from "@/public/icons/contourBg.png";
-   `----
-
-Import trace for requested module:
-./app/(main)/[slug]/page.tsx
- ⨯ ./app/(main)/[slug]/page.tsx
-Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-  [31m|[0m
-  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-  [31m|[0m
-
-   ,-[[36;1;4mC:\Users\USER\Desktop\Workspace\apg\apg\apps\gadgets\app\(main)\[slug]\page.tsx[0m:4:1]
- [2m1[0m | import { getProductBySlug } from "@calls/productCalls";
- [2m2[0m | import Image from "next/image";
- [2m3[0m | import { Metadata } from "next";
- [2m4[0m | import { useState } from "react";
-   : [35;1m         ^^^^^^^^[0m
- [2m5[0m | import { notFound } from "next/navigation";
- [2m6[0m | import StarRating from "@/components/ui/starRating";
- [2m6[0m | import bg from "@/public/icons/contourBg.png";
-   `----
-
-Import trace for requested module:
-./app/(main)/[slug]/page.tsx
- GET /dell-latitude-7480-iBUpXs 500 in 57986ms
- ⨯ ./app/(main)/[slug]/page.tsx
-Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-  [31m|[0m
-  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-  [31m|[0m
-
-   ,-[[36;1;4mC:\Users\USER\Desktop\Workspace\apg\apg\apps\gadgets\app\(main)\[slug]\page.tsx[0m:4:1]
- [2m1[0m | import { getProductBySlug } from "@calls/productCalls";
- [2m2[0m | import Image from "next/image";
- [2m3[0m | import { Metadata } from "next";
- [2m4[0m | import { useState } from "react";
-   : [35;1m         ^^^^^^^^[0m
- [2m5[0m | import { notFound } from "next/navigation";
- [2m6[0m | import StarRating from "@/components/ui/starRating";
- GET /_next/static/webpack/e14c854c65baed54.webpack.hot-update.json 500 in 3089ms
- GET /dell-latitude-7480-iBUpXs 500 in 87ms
- [2m6[0m | import bg from "@/public/icons/contourBg.png";
-   `----
-
-Import trace for requested module:
-./app/(main)/[slug]/page.tsx
- ⨯ ./app/(main)/[slug]/page.tsx
-Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-  [31m|[0m
-  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-  [31m|[0m
-
-   ,-[[36;1;4mC:\Users\USER\Desktop\Workspace\apg\apg\apps\gadgets\app\(main)\[slug]\page.tsx[0m:4:1]
- [2m1[0m | import { getProductBySlug } from "@calls/productCalls";
- [2m2[0m | import Image from "next/image";
- [2m3[0m | import { Metadata } from "next";
- [2m4[0m | import { useState } from "react";
-   : [35;1m         ^^^^^^^^[0m
- [2m5[0m | import { notFound } from "next/navigation";
- [2m6[0m | import StarRating from "@/components/ui/starRating";
- [2m6[0m | import bg from "@/public/icons/contourBg.png";
-   `----
-
-Import trace for requested module:
-./app/(main)/[slug]/page.tsx
- ⚠ Fast Refresh had to perform a full reload due to a runtime error.
- ✓ Compiled /[slug] in 22s (2224 modules)
- ⚠ Fast Refresh had to perform a full reload due to a runtime error.
- GET /_next/static/webpack/e14c854c65baed54.webpack.hot-update.json 404 in 28013ms
- GET /dell-latitude-7480-iBUpXs 200 in 42634ms
- ✓ Compiled in 10.1s (2235 modules)
- GET /dell-latitude-7480-iBUpXs 200 in 14052ms
- GET /dell-latitude-7480-iBUpXs 200 in 27383ms
- GET /dell-latitude-7480-iBUpXs 200 in 13697ms
- ✓ Compiled in 18.1s (2235 modules)
- GET /dell-latitude-7480-iBUpXs 200 in 11408ms
+ ✓ Compiled /[slug] in 8.8s (2033 modules)
+ GET /cart 200 in 1483ms
+ GET /placeat-quam-aut-vitae-voluptatem-58zmaF 200 in 14277ms
+ GET /placeat-quam-aut-vitae-voluptatem-58zmaF 200 in 1875ms
+ GET /cart 200 in 24ms
+ GET /favicon.ico 200 in 52ms
+ GET /checkout 200 in 49ms
+ GET /favicon.ico 200 in 21ms
+ GET /checkout 200 in 1423ms
+ GET /favicon.ico 200 in 31ms
+ ✓ Compiled in 13.9s (1871 modules)
+ GET /checkout 200 in 1098ms
+ ✓ Compiled in 10s (1871 modules)
+ GET /checkout 200 in 272ms
+ GET /checkout 200 in 1219ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1656ms (1077 modules)
+ GET /favicon.ico 200 in 2190ms
+ ✓ Compiled in 5.8s (1871 modules)
+ GET /checkout 200 in 898ms
+ GET /checkout 200 in 2233ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1115ms (1077 modules)
+ GET /favicon.ico 200 in 1373ms
+ ✓ Compiled in 5.2s (1871 modules)
+ GET /checkout 200 in 3775ms
+ GET /checkout 200 in 3703ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1116ms (1077 modules)
+ GET /favicon.ico 200 in 1549ms
+ GET /checkout 200 in 2499ms
+ GET /favicon.ico 200 in 55ms
+ GET /checkout 200 in 546ms
+ GET /favicon.ico 200 in 39ms
+ GET /checkout 200 in 413ms
+ GET /favicon.ico 200 in 58ms
+ GET /checkout/success 200 in 458ms
+ GET /favicon.ico 200 in 50ms
+ ✓ Compiled in 19.7s (1871 modules)
+ GET /checkout/success 200 in 844ms
+ GET / 200 in 79ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1751ms (1077 modules)
+ GET /favicon.ico 200 in 2366ms
+ GET /products 200 in 340ms
+ GET /favicon.ico 200 in 55ms
+ GET /cart 200 in 75ms
+ GET /favicon.ico 200 in 21ms
+ GET /checkout 200 in 78ms

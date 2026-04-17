@@ -26,17 +26,17 @@ export default function CheckoutSummary({ form }: Props) {
     return freshId;
   };
 
-  const loadPaystackScript = () =>
-    new Promise<void>((resolve) => {
-      if (window.PaystackPop) return resolve();
+  // const loadPaystackScript = () =>
+  //   new Promise<void>((resolve) => {
+  //     if (window.PaystackPop) return resolve();
 
-      const script = document.createElement("script");
-      script.src = "https://js.paystack.co/v1/inline.js";
-      script.async = true;
-      script.onload = () => resolve();
+  //     const script = document.createElement("script");
+  //     script.src = "https://js.paystack.co/v1/inline.js";
+  //     script.async = true;
+  //     script.onload = () => resolve();
 
-      document.body.appendChild(script);
-    });
+  //     document.body.appendChild(script);
+  //   });
 
   const placeOrder = async () => {
     if (!items.length) {
@@ -52,48 +52,104 @@ export default function CheckoutSummary({ form }: Props) {
     setLoading(true);
 
     try {
-      await loadPaystackScript();
-
+      // await loadPaystackScript();
       const id = await ensureCartId();
-
       const payload = { ...form, cart_id: id };
       const res = await initiateCheckout(payload);
 
-      const { amount, email, public_key, reference, order_id } =
+      // const { amount, email, public_key, reference, order_id } =
+      //   res || res?.data;
+
+      const { reference, payment_url, order_id } =
         res || res?.data;
 
-      const paystackEmail = form.email || email;
-      if (!paystackEmail) {
-        toast.error("Email is required to proceed with payment");
+      console.log("Checkout response:", res);
+
+      if (!payment_url) {
+        toast.error("Failed to get payment link");
         return;
       }
 
-      const handler = window.PaystackPop.setup({
-        key: public_key,
-        email: paystackEmail,
-        amount: Math.round(amount), // already kobo
-        reference,
-        metadata: {
-          order_id,
-          cart_id: id,
-        },
+      const sessionId = Date.now().toString();
+      const currentSession = sessionId;
+      localStorage.setItem("checkoutSessionId", sessionId);
+      localStorage.setItem("orderReference", reference);
+      localStorage.setItem("checkoutStarted", "true");
+      localStorage.setItem("orderId", order_id.toString());
+
+      // window.location.href = payment_url;
+      const width = 600;
+      const height = 800;
+
+      const left = window.screenX + (window.innerWidth - width) / 2;
+      const top = window.screenY + (window.innerHeight - height) / 2;
+
+      const popup = window.open(
+        payment_url,
+        "payment",
+        `width=${width},height=${height},left=${left},top=${top}`
+      );
+      // localStorage.setItem("orderReference", reference);
+
+      const interval = setInterval(() => {
+        if (popup?.closed) {
+          clearInterval(interval);
+
+          const storedSession = localStorage.getItem("checkoutSessionId");
+
+          if (storedSession !== currentSession) return;
+
+          const ref = localStorage.getItem("orderReference");
+          const order_id = localStorage.getItem("orderId");
+
+          if (!ref) return
+
+          verifyPayment(ref, order_id as any);
+          // if (ref) {
+          //   verifyPayment(ref, order_id as any);
+          // }
+        }
+      }, 1000);
+
+      // const paystackEmail = form.email || email;
+      // if (!paystackEmail) {
+      //   toast.error("Email is required to proceed with payment");
+      //   return;
+      // }
+
+      // const handler = window.PaystackPop.setup({
+      //   key: public_key,
+      //   email: paystackEmail,
+      //   amount: Math.round(amount), // already kobo
+      //   reference,
+      //   metadata: {
+      //     order_id,
+      //     cart_id: id,
+      //   },
 
         // ✅ MUST be sync
-        callback: function (response: any) {
-          verifyPayment(response.reference, order_id);
-        },
+        // callback: function (response: any) {
+        //   verifyPayment(response.reference, order_id);
+        // },
 
-        onClose: function () {
-          toast.error("Payment cancelled");
-        },
-      });
+        // onClose: function () {
+        //   toast.error("Payment cancelled");
+        // },
+      // });
 
-      handler.openIframe();
+      // handler.openIframe();
     } catch (err: any) {
       toast.error(err?.message || "Failed to initiate checkout");
     } finally {
       setLoading(false);
     }
+  };
+
+  const clearCheckoutStorage = () => {
+    localStorage.removeItem("checkoutSessionId");
+    localStorage.removeItem("orderReference");
+    localStorage.removeItem("orderId");
+    localStorage.removeItem("checkoutStarted");
   };
 
   const verifyPayment = async (
@@ -105,7 +161,13 @@ export default function CheckoutSummary({ form }: Props) {
         reference,
         order_id,
       });
-      console.log(verifyRes);
+      console.log("Verification response:", verifyRes);
+      clearCheckoutStorage();
+
+      if (verifyRes.status !== "processing") {
+        toast.error("Payment not completed");
+        return;
+      }
 
       toast.success("Payment verified!");
       clearCart();
