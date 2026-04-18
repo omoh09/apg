@@ -67,7 +67,7 @@ export default function OrderCard({
   const [reviewText, setReviewText] = useState("");
   const selectedOption = ratingOptions.find((r) => r.stars === selectedRating);
   const router = useRouter();
-  const [reviewTitle, setReviewTitle] = useState("");
+  // const [reviewTitle, setReviewTitle] = useState("");
 
   const handleBuyAgain = () => {
     onAddToCart(order.product.id);

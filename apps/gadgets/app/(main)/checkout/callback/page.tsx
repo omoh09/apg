@@ -11,20 +11,6 @@ export default function CheckoutCallbackPage() {
   const params = useSearchParams();
   const { clearCart } = useCart();
 
-  useEffect(() => {
-    const reference =
-      params.get("orderReference") || localStorage.getItem("orderReference");
-
-    const order_id = localStorage.getItem("orderId");
-
-    if (!reference || !order_id) {
-      router.push("/checkout/failed");
-      return;
-    }
-
-    verifyPayment(reference, order_id);
-  }, []);
-
   const verifyPayment = async (reference: string, order_id: string) => {
     try {
       const res = await verifyCheckout({ reference, order_id });
@@ -45,11 +31,29 @@ export default function CheckoutCallbackPage() {
       clearCart();
 
       router.push("/checkout/success");
-    } catch (err: any) {
-      toast.error(err?.message || "Verification failed");
-      router.push("/checkout/failed");
-    }
+    } catch (err: unknown) {
+        const message =
+            err instanceof Error ? err.message : "Verification failed";
+
+        toast.error(message);
+        router.push("/checkout/failed");
+        }
   };
+
+  useEffect(() => {
+    const reference =
+      params.get("orderReference") ||
+      localStorage.getItem("orderReference");
+
+    const order_id = localStorage.getItem("orderId");
+
+    if (!reference || !order_id) {
+      router.push("/checkout/failed");
+      return;
+    }
+
+    verifyPayment(reference, order_id);
+  }, [params, router]);
 
   return (
     <main className="flex items-center justify-center h-screen">

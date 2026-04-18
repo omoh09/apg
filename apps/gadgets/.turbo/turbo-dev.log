@@ -217,3 +217,180 @@ Retrying 1/3...
  GET /favicon.ico 200 in 326ms
  GET /checkout 200 in 101ms
  GET /favicon.ico 200 in 27ms
+ GET /checkout/success 200 in 1735ms
+ GET /favicon.ico 200 in 123ms
+ ✓ Compiled in 28s (1871 modules)
+ GET / 200 in 8191ms
+ GET / 200 in 82ms
+ GET / 200 in 276ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 2.3s (1077 modules)
+ GET /favicon.ico 200 in 4066ms
+ GET /products 200 in 2688ms
+ GET /favicon.ico 200 in 35ms
+ GET /cart 200 in 356ms
+ GET /favicon.ico 200 in 23ms
+ GET /checkout 200 in 68ms
+ GET /favicon.ico 200 in 32ms
+ GET /checkout/success 200 in 278ms
+ GET /favicon.ico 200 in 18ms
+ ✓ Compiled in 12.2s (1871 modules)
+ GET / 200 in 3272ms
+ GET / 200 in 246ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1016ms (1077 modules)
+ GET /favicon.ico 200 in 1764ms
+ GET /products 200 in 162ms
+ GET /favicon.ico 200 in 33ms
+ ○ Compiling /[slug] ...
+ ✓ Compiled /[slug] in 5.1s (1222 modules)
+ GET /cart 200 in 2203ms
+ GET /favicon.ico 200 in 144ms
+ GET /excepturi-inventore-k1RbhZ 200 in 8886ms
+ GET /checkout 200 in 62ms
+ GET /favicon.ico 200 in 19ms
+ ✓ Compiled in 23.6s (1871 modules)
+ GET /checkout 200 in 7546ms
+ GET /checkout 200 in 11089ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1280ms (1077 modules)
+ GET /favicon.ico 200 in 2364ms
+ ✓ Compiled in 10.9s (1871 modules)
+ GET /cart 200 in 80ms
+ GET /checkout 200 in 367ms
+ GET / 200 in 673ms
+ GET /products 200 in 1957ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 2.7s (1077 modules)
+ GET /favicon.ico 200 in 3207ms
+ GET /cart 200 in 354ms
+ GET /favicon.ico 200 in 106ms
+ GET /checkout 200 in 57ms
+ GET /favicon.ico 200 in 19ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 6.9s (1875 modules)
+ GET /nomba/checkout/success?orderId=1ddf62b5-4d8f-41a7-b2c3-c34f060ab384&orderReference=ORD-1SVQFPL8EW 404 in 6617ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 2.6s (1080 modules)
+ GET /favicon.ico 200 in 4776ms
+ GET /checkout/success?orderId=1ddf62b5-4d8f-41a7-b2c3-c34f060ab384&orderReference=ORD-1SVQFPL8EW 200 in 3715ms
+ GET /favicon.ico 200 in 82ms
+ GET /cart 200 in 87ms
+ GET /favicon.ico 200 in 31ms
+ GET /cart 200 in 297ms
+ GET /favicon.ico 200 in 4001ms
+ ✓ Compiled in 39.2s (1872 modules)
+ GET /checkout 200 in 15470ms
+ GET /checkout 200 in 61ms
+ GET /cart 200 in 4832ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 2.2s (1077 modules)
+ GET /favicon.ico 200 in 4612ms
+ GET /cart 200 in 4963ms
+ GET /checkout 200 in 76ms
+ GET /favicon.ico 200 in 174ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 2.3s (1080 modules)
+ GET /nomba/checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 404 in 4238ms
+ GET /favicon.ico 200 in 385ms
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 1263ms
+ GET /favicon.ico 200 in 23ms
+ ✓ Compiled in 28.5s (1872 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 2280ms
+ ✓ Compiled in 5.6s (1872 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 347ms
+ ✓ Compiled in 2.1s (1872 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 147ms
+ ✓ Compiled in 5.3s (1872 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 232ms
+ ✓ Compiled in 5.9s (1872 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 190ms
+ ✓ Compiled in 7.2s (1980 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 5631ms
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 67ms
+ ✓ Compiled in 7.2s (1872 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 239ms
+ ✓ Compiled in 1838ms (1872 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 215ms
+ ✓ Compiled in 634ms (812 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 62ms
+ ✓ Compiled in 716ms (812 modules)
+ ✓ Compiled in 1216ms (812 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 1126ms
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 110ms
+ ✓ Compiled in 7.4s (1980 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 5379ms
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 80ms
+ ✓ Compiled in 4.8s (812 modules)
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 141ms
+ GET /checkout/success?orderId=d04fdc5e-d23b-4991-94b4-245cd364f433&orderReference=ORD-KEHDX08YRT 200 in 3308ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /checkout/failed in 6.8s (1077 modules)
+ ✓ Compiled in 4s (800 modules)
+ GET /favicon.ico 200 in 12491ms
+ GET /checkout/failed 200 in 8936ms
+ GET /favicon.ico 200 in 24ms
+ GET /checkout 200 in 81ms
+ GET /favicon.ico 200 in 22ms
+ GET /checkout/success?orderId=2f512cc0-ab9a-4154-8ac7-9ff08d2767ed&orderReference=ORD-KNDDHE6AFE 200 in 657ms
+ GET /favicon.ico 200 in 39ms
+ GET /cart 200 in 100ms
+ GET /favicon.ico 200 in 82ms
+ GET /cart 200 in 48ms
+ GET /checkout 200 in 39ms
+ GET /favicon.ico 200 in 35ms
+ GET /cart 200 in 38ms
+ GET /favicon.ico 200 in 17ms
+ GET / 200 in 87ms
+ GET /favicon.ico 200 in 50ms
+ GET /products 200 in 72ms
+ GET /favicon.ico 200 in 27ms
+ GET /cart 200 in 38ms
+ GET /favicon.ico 200 in 28ms
+ GET /checkout 200 in 48ms
+ GET /favicon.ico 200 in 21ms
+ ✓ Compiled in 11.4s (814 modules)
+ GET /checkout 200 in 134ms
+ GET /checkout/success?orderId=b3cd9259-4a4e-4e5d-91e1-169776c32138&orderReference=ORD-45QJSJC6XY 200 in 497ms
+ GET /favicon.ico 200 in 166ms
+ GET /cart 200 in 107ms
+ GET /favicon.ico 200 in 60ms
+ GET /checkout 200 in 115ms
+ GET /favicon.ico 200 in 24ms
+ ○ Compiling /checkout/callback ...
+ ✓ Compiled /checkout/callback in 16.4s (1889 modules)
+ GET /checkout/callback?orderId=ff996cdc-2414-448f-9286-388198127e83&orderReference=ORD-RTFLZBG2XW 200 in 20532ms
+ GET /favicon.ico 200 in 618ms
+ GET /checkout/success 200 in 963ms
+ GET /favicon.ico 200 in 45ms
+ GET / 200 in 89ms
+ GET /favicon.ico 200 in 60ms
+ GET /products 200 in 485ms
+ GET /favicon.ico 200 in 107ms
+ GET /cart 200 in 2443ms
+ GET /favicon.ico 200 in 181ms
+ GET /checkout 200 in 621ms
+ GET /favicon.ico 200 in 468ms
+ GET /checkout/callback?orderId=8d40b579-a6e4-4748-83d8-280308e257cd&orderReference=ORD-UP7KXBQTCZ 200 in 453ms
+ GET /favicon.ico 200 in 118ms
+ GET /checkout/success 200 in 306ms
+ GET /favicon.ico 200 in 24ms
+ ✓ Compiled in 41.8s (1859 modules)
+ GET /checkout/success 200 in 1186ms
+ ✓ Compiled in 26.5s (816 modules)
+ GET /checkout/success 200 in 427ms
+ ○ Compiling / ...
+ ✓ Compiled / in 21.6s (1859 modules)
+ ✓ Compiled (1881 modules)
+ GET / 200 in 4934ms
+ GET / 200 in 206ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 9.3s (1082 modules)
+ GET /favicon.ico 200 in 12636ms
+ GET / 200 in 1649ms
+ GET /products 200 in 1925ms
+ GET /favicon.ico 200 in 148ms
+ GET /cart 200 in 593ms
+ GET /favicon.ico 200 in 31ms
+ GET /checkout 200 in 158ms
+ GET /favicon.ico 200 in 22ms
