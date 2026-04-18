@@ -201,3 +201,19 @@ Retrying 1/3...
  GET /cart 200 in 75ms
  GET /favicon.ico 200 in 21ms
  GET /checkout 200 in 78ms
+ GET /favicon.ico 200 in 19ms
+ GET /checkout/success 200 in 88ms
+ GET /favicon.ico 200 in 26ms
+ GET / 200 in 69ms
+ GET /favicon.ico 200 in 43ms
+ ✓ Compiled in 2.8s (1871 modules)
+ GET / 200 in 214ms
+ GET /products 200 in 2213ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 13.6s (1077 modules)
+ GET /favicon.ico 200 in 16569ms
+ GET /cart 200 in 10474ms
+ GET /cart 200 in 131ms
+ GET /favicon.ico 200 in 326ms
+ GET /checkout 200 in 101ms
+ GET /favicon.ico 200 in 27ms
