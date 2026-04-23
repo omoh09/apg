@@ -56,8 +56,8 @@ export default function OrdersPage() {
 
         const res = await getOrders(page);
 
-        const rawOrders = res?.data?.data || [];
-        const meta = res?.data?.meta;
+        const rawOrders = res?.data?.data || res?.data || [];
+        const meta = res?.data?.meta || res?.meta;
 
         setLastPage(meta?.last_page || 1);
 
