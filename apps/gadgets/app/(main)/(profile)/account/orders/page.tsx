@@ -9,34 +9,15 @@ type OrderStatus = "Delivered" | "Processing" | "Cancelled";
 
 type Order = {
   id: number;
-  product: {
-    id: number;
-    title: string;
-    image: string;
-    price: number;
-    currency: string;
+  order_number: string;
+  product_id: number;
+  product_title: string;
+  status: OrderStatus;
+  total: string;
+  created_at: string | null;
+  cover_photo?: {
+    url: string;
   };
-  status: OrderStatus;
-  ordered_at: string;
-};
-
-type Product = {
-  id: number;
-  title: string;
-  cover_photo_url: string;
-  currency: string;
-};
-
-type Item = {
-  unit_price: number | string;
-  product: Product;
-};
-
-type NewOrder = {
-  id: number;
-  status: OrderStatus;
-  created_at: string;
-  items: Item[];
 };
 
 export default function OrdersPage() {
@@ -45,30 +26,47 @@ export default function OrdersPage() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
+  const formatDate = (date: string | null) => {
+    if (!date) return "N/A";
+
+    return new Date(date).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         const res = await getOrders();
         const rawOrders = res?.data?.data || res?.data || [];
 
-        const mappedOrders: Order[] = rawOrders.flatMap((order: NewOrder) =>
-          order.items.map((item: Item) => ({
+        const mappedOrders: Order[] = rawOrders.map((order: any) => {
+          const snapshot = order.cart_snapshot?.[0];
+
+          return {
             id: order.id,
-            product: {
-              id: item.product.id,
-              title: item.product.title,
-              image: item.product.cover_photo_url,
-              price: Number(item.unit_price),
-              currency: item.product.currency,
-            },
+            order_number: order.order_number,
+
+            product_id: Number(order.product_id || snapshot?.product_id),
+
+            product_title:
+              order.product_title ||
+              snapshot?.name || // might be null
+              "Unknown Product",
+
             status: mapOrderStatus(order.status),
-            ordered_at: new Date(order.created_at).toLocaleDateString("en-US", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            }),
-          }))
-        );
+
+            total: order.total || snapshot?.total_price?.toString() || "0",
+
+            created_at: order.created_at,
+
+            cover_photo: order.cover_photo || {
+              url: "/placeholder.png",
+            },
+          };
+        });
 
         setOrders(mappedOrders);
       } catch (err) {
@@ -116,8 +114,21 @@ export default function OrdersPage() {
         {filteredOrders.length ? (
           filteredOrders.map((order, idx) => (
             <OrderCard
-              key={`${order.id}-${idx}`}
-              order={order}
+              key={order.id}
+              order={{
+                id: order.id,
+                product: {
+                  id: order.product_id,
+                  title: order.product_title,
+                  image: order.cover_photo?.url || "",
+                  price: Number(order.total),
+                  currency: "NGN", // or from backend later
+                },
+                status: order.status,
+                ordered_at: order.created_at
+                  ? formatDate(order.created_at)
+                  : "N/A",
+              }}
               onAddToCart={handleAddToCart}
             />
           ))

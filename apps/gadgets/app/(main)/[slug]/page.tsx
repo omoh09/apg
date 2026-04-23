@@ -6,6 +6,7 @@ import StarRating from "@/components/ui/starRating";
 import bg from "@/public/icons/contourBg.png";
 import { HiBadgeCheck } from "react-icons/hi";
 import Link from "next/link";
+import AddToCart from "./addToCart";
 
 type ProductImage = {
   id: number;
@@ -53,6 +54,7 @@ export default async function ProductDetailsPage({
   if (!product) return notFound();
 
   const {
+    id,
     title,
     short_description,
     detailed_description,
@@ -98,9 +100,9 @@ export default async function ProductDetailsPage({
           <div className=" text-black flex items-center px-20 h-full w-full">
             <h1 className="text-4xl font-bold tracking-tighter">{title}</h1>
           </div>
-        </div>         
+        </div>
       </div>
-
+      <AddToCart title={title} id={id} />
       {/* --- Main Product Layout --- */}
       <div className="grid md:grid-cols-2 gap-12">
         {/* Left: Large Image */}

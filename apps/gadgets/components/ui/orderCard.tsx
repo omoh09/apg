@@ -67,7 +67,7 @@ export default function OrderCard({
   const [reviewText, setReviewText] = useState("");
   const selectedOption = ratingOptions.find((r) => r.stars === selectedRating);
   const router = useRouter();
-  // const [reviewTitle, setReviewTitle] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const handleBuyAgain = () => {
     onAddToCart(order.product.id);
@@ -77,25 +77,42 @@ export default function OrderCard({
   const handleSendReview = async () => {
     if (!selectedRating) return;
 
-    const selectedOption = ratingOptions.find(
-      (r) => r.stars === selectedRating
-    );
+    try {
+      setSubmitting(true);
 
-    await addReview({
-      product_id: order.product.id,
-      order_id: order.id,
-      rating: selectedRating,
-      title: selectedOption?.label || "Review",
-      review: reviewText,
-    });
+      const selectedOption = ratingOptions.find(
+        (r) => r.stars === selectedRating
+      );
 
-    toast.success("Thanks for your feedback!");
-    setShowReview(false);
-    setSelectedRating(null);
-    setReviewText("");
+      await addReview({
+        product_id: order.product.id,
+        order_id: order.id, // ⚠️ confirm if backend wants order_number instead
+        rating: selectedRating,
+        title: selectedOption?.label || "Review",
+        review: reviewText,
+      });
+
+      toast.success("Thanks for your feedback!");
+
+      setShowReview(false);
+      setSelectedRating(null);
+      setReviewText("");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to submit review. Try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const isDelivered = order.status === "Delivered";
+
+  const formatPrice = (price: number, currency: string) => {
+    return new Intl.NumberFormat("en-NG", {
+      style: "currency",
+      currency: currency || "NGN",
+    }).format(price);
+  };
 
   return (
     <div
@@ -106,7 +123,7 @@ export default function OrderCard({
       {/* Image */}
       <div className="relative h-full w-72 rounded-xl overflow-hidden bg-apgGrey">
         <Image
-          src={order.product.image}
+          src={order.product.image || "/placeholder.png"}
           alt={order.product.title}
           fill
           className="object-contain p-2"
@@ -118,7 +135,8 @@ export default function OrderCard({
         <div>
           <h3 className="text-2xl font-bold">{order.product.title}</h3>
           <p className="text-sm text-greyText">
-            {order.ordered_at} • {order.product.price} {order.product.currency}
+            {order.ordered_at} •{" "}
+            {formatPrice(order.product.price, order.product.currency)}
           </p>
           <span
             className={`inline-block mt-1 px-3 py-1 text-xs rounded-full font-medium ${
@@ -248,10 +266,10 @@ export default function OrderCard({
               </button>
               <button
                 onClick={handleSendReview}
-                disabled={!selectedRating}
-                className="px-4 py-2 bg-primary text-white rounded-full disabled:opacity-40 hover:scale-105 transition"
+                disabled={!selectedRating || submitting}
+                className="px-4 py-2 bg-primary text-white rounded-full disabled:opacity-40"
               >
-                Submit Review
+                {submitting ? "Submitting..." : "Submit Review"}
               </button>
             </div>
           </div>
