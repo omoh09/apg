@@ -25,6 +25,9 @@ export default function OrdersPage() {
   const [activeTab, setActiveTab] = useState<OrderStatus | "All">("All");
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const [page, setPage] = useState(1);
+  const [lastPage, setLastPage] = useState(1);
+  const [loadingMore, setLoadingMore] = useState(false);
 
   const formatDate = (date: string | null) => {
     if (!date) return "N/A";
@@ -37,42 +40,44 @@ export default function OrdersPage() {
   };
 
   useEffect(() => {
-    const fetchOrders = async () => {
+    const fetchOrders = async (pageNumber = 1) => {
       try {
-        const res = await getOrders();
-        const rawOrders = res?.data?.data || res?.data || [];
+        if (pageNumber === 1) setLoading(true);
+        else setLoadingMore(true);
 
-        const mappedOrders: Order[] = rawOrders.map((order: any) => {
+        const res = await getOrders(pageNumber);
+
+        const rawOrders = res?.data?.data || [];
+        const meta = res?.data?.meta;
+
+        setLastPage(meta?.last_page || 1);
+
+        const mappedOrders = rawOrders.map((order: any) => {
           const snapshot = order.cart_snapshot?.[0];
 
           return {
             id: order.id,
             order_number: order.order_number,
-
             product_id: Number(order.product_id || snapshot?.product_id),
-
             product_title:
-              order.product_title ||
-              snapshot?.name || // might be null
-              "Unknown Product",
-
+              order.product_title || snapshot?.name || "Unknown Product",
             status: mapOrderStatus(order.status),
-
             total: order.total || snapshot?.total_price?.toString() || "0",
-
             created_at: order.created_at,
-
             cover_photo: order.cover_photo || {
               url: "/placeholder.png",
             },
           };
         });
 
-        setOrders(mappedOrders);
+        setOrders((prev) =>
+          pageNumber === 1 ? mappedOrders : [...prev, ...mappedOrders]
+        );
       } catch (err) {
         console.error(err);
       } finally {
         setLoading(false);
+        setLoadingMore(false);
       }
     };
 
@@ -111,31 +116,43 @@ export default function OrdersPage() {
 
       {/* Orders */}
       <div className="flex flex-col gap-4">
-        {filteredOrders.length ? (
-          filteredOrders.map((order, idx) => (
-            <OrderCard
-              key={order.id}
-              order={{
-                id: order.id,
-                product: {
-                  id: order.product_id,
-                  title: order.product_title,
-                  image: order.cover_photo?.url || "",
-                  price: Number(order.total),
-                  currency: "NGN", // or from backend later
-                },
-                status: order.status,
-                ordered_at: order.created_at
-                  ? formatDate(order.created_at)
-                  : "N/A",
-              }}
-              onAddToCart={handleAddToCart}
-            />
-          ))
-        ) : (
-          <p className="text-center text-gray-500">No orders found.</p>
-        )}
+        {filteredOrders.length
+          ? filteredOrders.map((order, idx) => (
+              <OrderCard
+                key={order.id}
+                order={{
+                  id: order.id,
+                  product: {
+                    id: order.product_id,
+                    title: order.product_title,
+                    image: order.cover_photo?.url || "",
+                    price: Number(order.total),
+                    currency: "NGN", // or from backend later
+                  },
+                  status: order.status,
+                  ordered_at: order.created_at
+                    ? formatDate(order.created_at)
+                    : "N/A",
+                }}
+                onAddToCart={handleAddToCart}
+              />
+            ))
+          : !filteredOrders.length &&
+            !loading && (
+              <p className="text-center text-gray-500">
+                No {activeTab !== "All" ? activeTab : ""} orders found.
+              </p>
+            )}
       </div>
+
+      {page < lastPage && (
+        <button
+          onClick={() => setPage((prev) => prev + 1)}
+          className="mx-auto px-4 py-2 bg-gray-200 rounded-full"
+        >
+          {loadingMore ? "Loading..." : "Load More"}
+        </button>
+      )}
     </div>
   );
 }

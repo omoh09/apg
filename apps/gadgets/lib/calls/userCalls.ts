@@ -52,8 +52,8 @@ export async function removeFromWishlist(productId: string) {
 }
 
 // Get user Orders
-export async function getOrders() {
-  return apiFetch("/api/orders", {
+export async function getOrders(page = 1) {
+  return apiFetch(`/api/orders?page=${page}`, {
     method: "GET",
     withCredentials: true,
   });
