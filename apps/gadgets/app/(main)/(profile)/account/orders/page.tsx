@@ -9,6 +9,7 @@ type OrderStatus = "Delivered" | "Processing" | "Cancelled";
 
 type Order = {
   id: number;
+  cart_snapshot: Snapshot[];
   order_number: string;
   product_id: number;
   product_title: string;
@@ -18,6 +19,14 @@ type Order = {
   cover_photo?: {
     url: string;
   };
+};
+
+type Snapshot = {
+  product_id: string;
+  name: string | null;
+  quantity: string;
+  unit_price: string;
+  total_price: number;
 };
 
 export default function OrdersPage() {
@@ -40,19 +49,19 @@ export default function OrdersPage() {
   };
 
   useEffect(() => {
-    const fetchOrders = async (pageNumber = 1) => {
+    const fetchOrders = async (page = 1) => {
       try {
-        if (pageNumber === 1) setLoading(true);
+        if (page === 1) setLoading(true);
         else setLoadingMore(true);
 
-        const res = await getOrders(pageNumber);
+        const res = await getOrders(page);
 
         const rawOrders = res?.data?.data || [];
         const meta = res?.data?.meta;
 
         setLastPage(meta?.last_page || 1);
 
-        const mappedOrders = rawOrders.map((order: any) => {
+        const mappedOrders = rawOrders.map((order: Order) => {
           const snapshot = order.cart_snapshot?.[0];
 
           return {
@@ -71,7 +80,7 @@ export default function OrdersPage() {
         });
 
         setOrders((prev) =>
-          pageNumber === 1 ? mappedOrders : [...prev, ...mappedOrders]
+          page === 1 ? mappedOrders : [...prev, ...mappedOrders]
         );
       } catch (err) {
         console.error(err);
@@ -82,7 +91,7 @@ export default function OrdersPage() {
     };
 
     fetchOrders();
-  }, []);
+  }, [page]);
 
   const filteredOrders =
     activeTab === "All" ? orders : orders.filter((o) => o.status === activeTab);
@@ -117,7 +126,7 @@ export default function OrdersPage() {
       {/* Orders */}
       <div className="flex flex-col gap-4">
         {filteredOrders.length
-          ? filteredOrders.map((order, idx) => (
+          ? filteredOrders.map((order) => (
               <OrderCard
                 key={order.id}
                 order={{
