@@ -13,6 +13,7 @@ export default function CartPage() {
   const { items, total, loading, updateQtyOptimistic } = useCart();
   const [updating, setUpdating] = useState<Record<number, boolean>>({});
   const router = useRouter();
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   const isLoggedIn = !!Cookies.get("apg_token");
 
@@ -25,7 +26,9 @@ export default function CartPage() {
     if (isLoggedIn) {
       router.push("/checkout");
     } else {
-      router.push("/login?redirect=/checkout");
+      console.log("User not logged in, showing auth modal");
+      // router.push("/login?redirect=/checkout");
+      setShowAuthModal(true);
     }
   };
 
@@ -139,6 +142,45 @@ export default function CartPage() {
           >
             Proceed to Checkout
           </button>
+
+          {showAuthModal && (
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+              <div className="bg-white rounded-xl p-6 w-[90%] max-w-md text-center">
+                <h2 className="text-xl font-semibold mb-2">
+                  Continue to checkout
+                </h2>
+                <p className="text-gray-600 mb-6">
+                  Sign in for a faster experience, or continue as a guest.
+                </p>
+
+                <div className="flex flex-col gap-3">
+                  {/* Sign in */}
+                  <button
+                    onClick={() => router.push("/login?redirect=/checkout")}
+                    className="btn pryBtn py-3"
+                  >
+                    Sign in to checkout
+                  </button>
+
+                  {/* Guest checkout */}
+                  <button
+                    onClick={() => router.push("/signup?redirect=/checkout")}
+                    className="btn border py-3"
+                  >
+                    Checkout as guest
+                  </button>
+
+                  {/* Cancel */}
+                  <button
+                    onClick={() => setShowAuthModal(false)}
+                    className="text-sm text-gray-500 mt-2"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

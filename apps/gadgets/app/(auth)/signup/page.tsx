@@ -2,7 +2,7 @@
 "use client";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 
@@ -60,6 +60,8 @@ export default function SignupPage() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") || "/";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,7 +96,8 @@ export default function SignupPage() {
       }
 
       toast.success("Account created successfully!");
-      router.push(`/verify?email=${form.login}`);
+      router.push(`/verify?email=${form.login}&redirect=${redirectTo}`);
+      // router.push(`/verify?email=${form.login}`);
     } catch (err: any) {
       console.error("Error:", err);
       setErrors({

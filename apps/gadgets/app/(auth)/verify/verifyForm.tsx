@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import { apiFetch } from "@/lib/api/api";
+import { getGuestSessionId } from "@/lib/cart/session";
 
 export default function VerifyForm() {
   const [otp, setOtp] = useState(Array(6).fill(""));
@@ -12,6 +13,8 @@ export default function VerifyForm() {
   const params = useSearchParams();
   const login = params.get("email");
   const router = useRouter();
+  const redirectTo = params.get("redirect") || "/";
+  const isGuestCheckout = !!params.get("redirect");  
 
   const handleChange = (value: string, index: number) => {
     if (/^\d*$/.test(value)) {
@@ -38,11 +41,23 @@ export default function VerifyForm() {
   const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
     const verification_code = otp.join("");
+    const guestSessionId = getGuestSessionId();
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+    };
+
+    if (isGuestCheckout && guestSessionId) {
+      headers["X-SESSION-ID"] = guestSessionId;
+    }
 
     try {
       const res = await apiFetch("/api/verify", {
         method: "POST",
         body: JSON.stringify({ login, verification_code }),
+        headers: {
+          "Content-Type": "application/json",
+          ...(guestSessionId && { "X-SESSION-ID": guestSessionId }),
+        },
       });
 
       // add token
@@ -54,7 +69,7 @@ export default function VerifyForm() {
         });
 
         toast.success("Account verified & logged in!");
-        router.push("/"); // redirect to homepage or dashboard
+        router.push(redirectTo);
       } else {
         toast.success("Account verified! Please login.");
         router.push("/login");
